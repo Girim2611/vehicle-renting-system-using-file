@@ -1,0 +1,3 @@
+hindu;car,Bolero,TN 35 FG 0091,4500.0,13000,30000
+dharsana;bike,Pulsar,TN 34 DG 2456,1700.0,30000,30000
+kiruthika;bike,RX100,TN 45 AS 3400,1800.0,3000,30000

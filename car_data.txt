@@ -1,0 +1,15 @@
+bike,Royal Enfield,TN 39 AA 2034,2500.0,null,340
+bike,Pulsar,TN 34 DG 2456,1700.0,dharsana,1500
+bike,RX100,TN 45 AS 3400,1800.0,kiruthika,200
+bike,Yamaha FZ,TN 46 AS 3480,1900.0,null,1200
+bike,Hero,TN 35 AS 4780,1500.0,null,700
+car,Bolero,TN 35 FG 0091,4500.0,hindu,300
+car,Toyota Corolla,TN 49 EE 9867,3500.0,null,100
+car,Maruthi Suzuki,TN 45 HH 7865,3400.0,null,50
+car,Mahindra Thar ,TN 39 AA 2789,5500.0,null,30
+car,Mahindra XUV,TN 35 TY 5487,4570.0,null,10
+car,Honda Civic,TN 51 SS 6582,4400.0,null,45
+car,Maruti Wagon,TN 66 FG 4567,4500.0,null,450
+car,Tata,TN 55 AA 3946,3400.0,null,3000
+car,Swift,TN 66 GH 3829,3000.0,null,1200
+car,Audi,TN 51 AF 2145,4700.0,null,2500
