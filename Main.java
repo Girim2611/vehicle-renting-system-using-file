@@ -26,10 +26,10 @@ public class Main
       
     String semail = "girijadevi@gmail.com";
     String spassword = "Siet@i2022";
-      System.out.print ("Enter the EmailId: ");
+      System.out.println("Enter the EmailId: ");
     String email = scanner.nextLine ();
 
-      System.out.print ("Enter the password: ");
+      System.out.println("Enter the password: ");
     String password = scanner.nextLine ();
       
     Boolean isValid =  (isCredentialsValid(email, password)) ;
@@ -287,7 +287,7 @@ public class Main
 
 		  Map < String, Object > carDetails = new HashMap <> ();
 
-		  System.out.print ("Enter  cname: ");
+		  System.out.print ("Enter  vehicle model : ");
 		  String cname=scanner.nextLine();
 		  carDetails.put ("model", cname);
 		  
@@ -405,6 +405,7 @@ public class Main
 		    }
 	 case "5":
 		    {
+		        Boolean h=false;
 		  
 		  if (!rentedvehicles.containsKey (name))
 		    {
@@ -418,7 +419,7 @@ public class Main
 		  vehicleDetails.put ("type", typeofvehicle);
 
            
-		  System.out.print ("Enter vehicle name you want to rent: ");
+		  System.out.println("Enter vehicle name you want to rent: ");
 		  String vehiclemodel=scanner.nextLine();
 		  
 		  vehicleDetails.put ("model", vehiclemodel);
@@ -429,9 +430,15 @@ public class Main
 			
 			vehicleDetails.put ("numberPlate", car.get ("numberPlate"));
 			vehicleDetails.put ("rentedPrice",car.get ("rentedPrice"));
-			    }
+			    
+			   	  if (car.get ("renterName").equals ("null")
+			      || ((String) car.get ("renterName")).isEmpty ())
+			      {
+			          h=true;
+			      }
 			}
-			
+			}
+			if(h==true){
 
 		  System.out.print ("Enter security deposit: ");
 		  vehicleDetails.put ("SecurityDeposit", scanner.nextLine ());
@@ -439,7 +446,11 @@ public class Main
 
 		  System.out.print ("Enter caution deposit: ");
 		  vehicleDetails.put ("CautionDeposit", scanner.nextLine ());
-
+		  System.out.println();
+                System.out.print("CautionDeposit  will be refunded on returning the vehicle"+" ");
+		      System.out.println("The Amount will be reduced there is any damage or loss of vehicle  "); 
+		      
+		    
 		  rentedvehicles.get (name).add (vehicleDetails);
 		  
 		for (Map.Entry < String, ArrayList < Map < String, Object >>> entry:rentedvehicles.entrySet())
@@ -492,15 +503,19 @@ public class Main
 			    }
 			}
 		    }
-
+			}
+			else{
+			System.out.println("****The vehicle is already rented please rent the another vehicle****");
+			System.out.println();
+		    }
 		  break;
 		}
 		case "6":
 		    {
-		        
+		      String k="",carname="";  
 		      for (Map.Entry < String, ArrayList < Map < String, Object >>> entry:rentedvehicles.entrySet())
 		    {
-		        String carname;
+		      
 		      String renterName = entry.getKey ();
 		      if(name.equals(renterName)){
 		      System.out.println ("\nRenter Name: " + renterName);
@@ -512,7 +527,6 @@ public class Main
 			  Map < String, Object > car = vehicles.get (i);
 			  System.out.println ("Index: " + i);
 			  System.out.println ("Car Name: " +car.get ("model"));
-			  carname=(String) car.get("model");
 			  System.out.println ("Number Plate: " +car.get ("numberPlate"));
 			  System.out.println ("Rented Price: " +car.get ("rentedPrice"));
 			  System.out.println ("Security Deposit: " +car.get ("SecurityDeposit"));
@@ -521,18 +535,34 @@ public class Main
 			}
 
 		      System.out.println("Enter the index to close the rent : ");
-		      int deleteIndex =Integer.parseInt (scanner.nextLine ());
+		        k=scanner.nextLine();
+		         Map < String, Object > car = vehicles.get (Integer.parseInt(k));
+		         carname=(String) car.get("model");
+
+		    for (Map < String, Object > carss:cars)
+			{
+			  if (carss.get ("model").equals (carname))
+			    {
+			      
+			      String newRenterName = null;
+			      carss.put ("renterName", newRenterName);
+			      break;
+			    }
+			}
+		    
+			  saveCarDataToFile (cars);
+			  
+		      int deleteIndex =Integer.parseInt (k);
 
 		      if (deleteIndex >= 0 && deleteIndex < vehicles.size ())
 			{
 			  vehicles.remove (deleteIndex);
+			   saveRentedDataToFile (rentedvehicles);
 			  System.out.println ("rent is closed");
+			  
 			}
 
-		      System.out.println("CautionDeposit  will be refunded on returning the vehicle");
-		      System.out.println("The Amount will be reduced there is any damage or loss of vehicle  "); 
-		      
-		    
+		     
 			  saveCarDataToFile(cars);
 		      }
 		     // saveCarDataToFile(cars);
